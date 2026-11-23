@@ -238,3 +238,164 @@ This is the fastest way to close the design feedback loop — no screenshots bac
 ```bash
 npm install -g @playwright/cli@latest
 ```
+
+---
+
+## 6. UI UX Pro Max
+
+**Repo:** https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+**Site:** https://uupm.cc
+**Skill copy:** [`skills/uiux-pro-max/SKILL.md`](skills/uiux-pro-max/SKILL.md)
+
+### What it is
+
+An AI skill providing design intelligence for professional UI/UX across multiple platforms and frameworks. Ships 194 reasoning rules and 80 searchable UI styles, covering everything from layout principles to component patterns and responsive behavior. The styles database is searchable so the agent can find the right visual reference for any design direction.
+
+### Key features
+
+- 194 reasoning rules for consistent design decisions
+- 80 searchable UI styles (find: "brutalist dark", "editorial minimal", "neon tech")
+- Multi-platform: web, mobile, desktop applications
+- Multi-framework: React, Vue, plain HTML
+- Python CLI for rule updates and style management
+
+### Install
+
+```bash
+npx ui-ux-pro-max-cli install
+```
+
+---
+
+## 7. Archify
+
+**Repo:** https://github.com/tt-a1i/archify
+**Site:** https://archify.si
+**Skill copy:** [`skills/archify/SKILL.md`](skills/archify/SKILL.md)
+
+### What it is
+
+Archify turns anything you want to understand, plan, or share into an interactive visual: travel itineraries, learning maps, complex system architectures, project plans. You describe it to your AI agent, and Archify generates one self-contained interactive HTML file you can explore, customize, and share. 130K+ installs on skills.sh.
+
+### Key features
+
+- One output: a single self-contained `.html` file, open by double-clicking
+- Works on anything: codebases, plans, ideas, relationships, timelines
+- Interactive: clickable nodes, zoom, pan, search
+- 52+ diagram types, all rendered without external dependencies
+- Live gallery at archify.si showing community outputs
+- Three sub-skills: `archify-review`, `archify-tuning`, `simplify-codebase`
+
+### Example prompts
+
+```
+Make me an architecture diagram of my app: frontend, backend, database, Redis cache.
+Map my project roadmap by quarter and dependency.
+Show the relationships between all files in this codebase.
+```
+
+### Install
+
+```bash
+npx skills add tt-a1i/archify
+```
+
+---
+
+## 8. Impeccable
+
+**Repo:** https://github.com/pbakaus/impeccable
+**Site:** https://impeccable.style
+**Skill copy:** [`skills/impeccable/SKILL.md`](skills/impeccable/SKILL.md)
+
+### What it is
+
+The design vocabulary for your coding agent. Impeccable gives agents words for specific design moves (`bolder`, `quieter`, `distill`, `colorize`, `typeset`) and a 62-rule slop detector that catches AI design tells before they ship. It also ships a UX reviewer (`critique`, scored against usability heuristics) and a technical quality auditor (`audit`, findings ranked P0 to P3).
+
+Same model, same brief — Impeccable turns a "cream page, thin serif, pill buttons" default into a page built around one striking picture.
+
+### 24 commands
+
+| Group | Commands |
+|---|---|
+| **Steer** | `bolder`, `quieter`, `distill`, `colorize`, `typeset`, `layout`, `animate`, `delight`, `overdrive` |
+| **Review** | `critique` (scored UX review), `audit` (P0–P3 technical quality) |
+| **Finish** | `polish`, `harden`, `clarify`, `adapt`, `optimize`, `onboard` |
+| **Iterate live** | `live` (pick element in browser + cycle variants), `generate` |
+| **Plan & setup** | `shape`, `init` (writes `PRODUCT.md`), `document` (writes `DESIGN.md`), `extract` |
+
+### Install
+
+```bash
+npx impeccable install
+# Then in agent:
+/impeccable init
+```
+
+---
+
+## 9. PPT Master
+
+**Repo:** https://github.com/hugohe3/ppt-master
+**Skill copy:** [`skills/ppt-master/SKILL.md`](skills/ppt-master/SKILL.md)
+
+### What it is
+
+AI generates native PowerPoint (`.pptx`) from any document — PDFs, DOCX, web pages, markdown. Not an HTML slideshow or image export — actual PowerPoint files you can open in PowerPoint or Keynote and continue editing. The agent reads the source material, identifies key points, structures the narrative arc, and generates a natively editable PPTX.
+
+### Key features
+
+- Output is a real `.pptx` file, not an HTML presentation
+- Input: PDF, DOCX, web URL, markdown, plain text
+- Understands source material structure (sections, hierarchy, figures)
+- Templates: professional, academic, business styles
+- Multilingual (original development in Chinese, full English support)
+- Python-based with `python-pptx`
+
+### Install
+
+```bash
+npx skills add hugohe3/ppt-master --skill ppt-master
+```
+
+---
+
+## 10. Diagram Design
+
+**Repo:** https://github.com/cathrynlavery/diagram-design
+**Site:** https://diagramdesign.dev
+**Skill copy:** [`skills/diagram-design/SKILL.md`](skills/diagram-design/SKILL.md)
+
+### What it is
+
+An agent skill that draws editorial diagrams as one self-contained HTML + SVG file, in your brand. 52 diagram types. No shadows, no Mermaid slop, no external dependencies. The output is one `.html` file you open by double-clicking — no server required.
+
+The design philosophy: diagrams your designer won't hate. The skill pulls your brand palette and fonts from your site URL on first run (`/diagram-design onboard https://yoursite.com`) so every diagram after that matches your brand automatically.
+
+### 52 diagram types
+
+Architecture, sequence, flowchart, ERD, swimlane, mind map, timeline, Gantt, quadrant, matrix, tree, org chart, network graph, Venn, funnel, journey map, wireframe, and more.
+
+### Key features
+
+- Zero dependencies in output HTML — works offline forever
+- Brand onboarding: pulls palette and fonts from your site
+- Import from draw.io, Mermaid, Excalidraw, PlantUML
+- Export to PNG or SVG
+- `/diagram-design` as a first-class slash command
+
+### Example prompts
+
+```
+Make me an architecture diagram: frontend, backend, database, Redis cache.
+I need a quadrant showing Q2 projects by impact vs effort.
+Give me a sequence of a bearer call with token refresh on 401.
+```
+
+### Install
+
+```bash
+npx skills add cathrynlavery/diagram-design
+# or Claude Code:
+/plugin marketplace add cathrynlavery/diagram-design
+```
