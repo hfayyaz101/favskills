@@ -2,6 +2,14 @@
 
 A personal collection of agent skills and resources that improve AI coding agent workflow. Each entry includes a detailed description and a local copy of the skill for offline reference.
 
+## Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hfayyaz101/favskills/main/install.sh | bash
+```
+
+Prompts you to pick **Claude Code**, **Cursor** (global or project), or **both** — then choose full suite, frontend design suite, or a single skill.
+
 ---
 
 ## Frontend Design
