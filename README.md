@@ -81,6 +81,19 @@ See [`large-projects.md`](large-projects.md) for detailed descriptions and usage
 
 ---
 
+## Networking & System
+
+> Skills for diagnosing Wi-Fi, home network performance, and connectivity issues.
+
+See [`networking.md`](networking.md) for detailed descriptions and v1 vs. v2 comparison.
+
+| Skill | What it does | Version |
+|---|---|---|
+| **Wi-Fi Diagnostics** | Sequential 4-step audit: PHY/RF scan → idle latency → DNS comparison → throughput/bufferbloat — ranked bottleneck list + before/after table | v1 — standard |
+| **Wi-Fi Diagnostics Pro** | Everything in v1 + Wi-Fi 6E/7, MIMO streams, WPA3, mesh backhaul, MTU/fragmentation, QoS/DSCP, SQM/CAKE detection, bufferbloat grade, extended comparison table | v2 — enhanced |
+
+---
+
 ## Writing & Video
 
 > Skills for content creation, media production, writing quality, and presentation generation.
