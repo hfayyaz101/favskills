@@ -33,6 +33,8 @@ AUTO_SKILLS=(
   last30days
   humanizer
   i-have-adhd
+  wifi-diagnostics
+  wifi-diagnostics-pro
 )
 
 # Skills by category (AUTO only — complex installs handled separately)
@@ -41,6 +43,7 @@ CAT_SENIOR=(karpathy-skills)
 CAT_RESEARCH=(last30days)
 CAT_LARGE=()
 CAT_WRITING=(humanizer i-have-adhd)
+CAT_NETWORKING=(wifi-diagnostics wifi-diagnostics-pro)
 
 LABEL_taste-skill="Taste Skill              — professional website design pipeline"
 LABEL_web-design-guidelines="Web Design Guidelines   — Vercel UI/a11y review"
@@ -55,6 +58,8 @@ LABEL_karpathy-skills="Karpathy Guidelines     — think before coding, simplici
 LABEL_last30days="Last 30 Days            — real-engagement search across Reddit/X/YouTube/HN"
 LABEL_humanizer="Humanizer               — rewrites AI text to sound human (26 patterns)"
 LABEL_i-have-adhd="I Have ADHD             — action-first outputs, numbered steps, no filler"
+LABEL_wifi-diagnostics="Wi-Fi Diagnostics       — 4-step audit: RF/PHY, latency, DNS, throughput + ranked fixes"
+LABEL_wifi-diagnostics-pro="Wi-Fi Diagnostics Pro   — adds Wi-Fi 6E/7, MIMO, WPA3, mesh, MTU, bufferbloat grade"
 
 # ── Auto-installer ────────────────────────────────────────────────────────────
 install_claude() {
@@ -130,6 +135,8 @@ print_manual_installs() {
       tip "Hyperframes          /plugin marketplace add heygen-com/hyperframes  (run in Claude Code)"
       tip "Marketing Skills     npx skills add https://github.com/coreyhaines31/marketingskills --skill '*'"
       ;;
+    networking)
+      ;;
   esac
 }
 
@@ -171,6 +178,7 @@ pick "Category:" \
   "Research & Understanding (1 auto + hints for 5 more)" \
   "Large Projects & Token Management (hints only)" \
   "Writing & Video  (2 auto + hints for 3 more)" \
+  "Networking & System (2 skills)" \
   "Single skill"
 category="$PICK"
 
@@ -181,7 +189,8 @@ case "$category" in
   4) skills=("${CAT_RESEARCH[@]}"); cat_key="research" ;;
   5) skills=(); cat_key="large" ;;
   6) skills=("${CAT_WRITING[@]}"); cat_key="writing" ;;
-  7)
+  7) skills=("${CAT_NETWORKING[@]}"); cat_key="networking" ;;
+  8)
     say "" >&2
     say "${B}Choose a skill:${R}" >&2
     i=1
@@ -198,7 +207,7 @@ case "$category" in
     skills=("${AUTO_SKILLS[$idx]}")
     cat_key="single"
     ;;
-  *) say "Invalid choice"; exit 1 ;;
+  *) say "Invalid choice."; exit 1 ;;
 esac
 
 # 3 — install
@@ -219,6 +228,7 @@ elif [ "$cat_key" = "all" ]; then
   print_manual_installs "research"
   print_manual_installs "large"
   print_manual_installs "writing"
+  print_manual_installs "networking"
 fi
 
 say ""
