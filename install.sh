@@ -37,6 +37,7 @@ AUTO_SKILLS=(
   wifi-diagnostics-pro
   strix
   meetily
+  mobile-agent-testers
 )
 
 # Skills by category (AUTO only — complex installs handled separately)
@@ -48,6 +49,7 @@ CAT_WRITING=(humanizer i-have-adhd)
 CAT_NETWORKING=(wifi-diagnostics wifi-diagnostics-pro)
 CAT_SECURITY=(strix)
 CAT_PRODUCTIVITY=(meetily)
+CAT_TESTING=(mobile-agent-testers)
 
 LABEL_taste-skill="Taste Skill              — professional website design pipeline"
 LABEL_web-design-guidelines="Web Design Guidelines   — Vercel UI/a11y review"
@@ -66,6 +68,7 @@ LABEL_wifi-diagnostics="Wi-Fi Diagnostics       — 4-step audit: RF/PHY, latenc
 LABEL_wifi-diagnostics-pro="Wi-Fi Diagnostics Pro   — adds Wi-Fi 6E/7, MIMO, WPA3, mesh, MTU, bufferbloat grade"
 LABEL_strix="Strix                   — AI pentesting: Kali Docker sandbox, OWASP Top 10+, SARIF output"
 LABEL_meetily="Meetily                 — MCP: search local meeting transcripts, extract decisions + action items"
+LABEL_mobile-agent-testers="Mobile Agent Testers    — 20 AI testers on iOS/Android simultaneously, no test scripts"
 
 # ── Auto-installer ────────────────────────────────────────────────────────────
 install_claude() {
@@ -162,6 +165,13 @@ print_manual_installs() {
       tip "2. Open Meetily → Settings → Integrations → MCP Server → enable Claude Code"
       tip "3. Start a new Claude Code session — tools load automatically"
       ;;
+    testing)
+      say ""
+      say "${B}Mobile Agent Testers — setup after skill install:${R}"
+      tip "gh repo create my-testers --public --template pierridotite/mobile-agent-testers --clone"
+      tip "cd my-testers && ./setup.sh"
+      tip "Needs: iOS Simulator + Android emulator, GitHub Actions, Anthropic API key"
+      ;;
   esac
 }
 
@@ -206,6 +216,7 @@ pick "Category:" \
   "Networking & System (2 skills)" \
   "Security (1 auto + setup hints)" \
   "Productivity (1 auto + hints for 1 more)" \
+  "Testing & QA (1 skill)" \
   "Single skill"
 category="$PICK"
 
@@ -219,7 +230,8 @@ case "$category" in
   7) skills=("${CAT_NETWORKING[@]}"); cat_key="networking" ;;
   8) skills=("${CAT_SECURITY[@]}"); cat_key="security" ;;
   9) skills=("${CAT_PRODUCTIVITY[@]}"); cat_key="productivity" ;;
-  10)
+  10) skills=("${CAT_TESTING[@]}"); cat_key="testing" ;;
+  11)
     say "" >&2
     say "${B}Choose a skill:${R}" >&2
     i=1
@@ -260,6 +272,7 @@ elif [ "$cat_key" = "all" ]; then
   print_manual_installs "networking"
   print_manual_installs "security"
   print_manual_installs "productivity"
+  print_manual_installs "testing"
 fi
 
 say ""

@@ -66,6 +66,16 @@ See [`research-understanding.md`](research-understanding.md) for detailed descri
 
 ---
 
+## Testing & QA
+
+> Skills for automated testing, mobile QA, and finding bugs without writing test scripts.
+
+| Skill | What it does | Source |
+|---|---|---|
+| **Mobile Agent Testers** | 20 Claude Code agents run simultaneously across iOS Simulators + Android emulators — exploratory testing, bug reproduction, version comparison; no test scripts; ~$0.15–$0.55/device per run | [repo](https://github.com/pierridotite/mobile-agent-testers) |
+
+---
+
 ## Security
 
 > Skills for security auditing, penetration testing, and vulnerability assessment.
