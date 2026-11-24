@@ -61,6 +61,18 @@ See [`research-understanding.md`](research-understanding.md) for detailed descri
 | **Last 30 Days** | Search engine scored by real engagement (upvotes, likes, Polymarket odds) — searches Reddit, X, YouTube, TikTok, HN, GitHub in parallel | [repo](https://github.com/mvanhorn/last30days-skill) |
 | **Career Ops** | AI job search agent: checks listings are still open, scores fit, tailors CV, drafts answers | [repo](https://github.com/career-ops-hq/career-ops) |
 | **REA** | Reverse Engineer Anything — MCP server that bridges agents to Hopper, Ghidra, and native RE tools | [rea.tools](https://rea.tools) · [repo](https://github.com/morluto/rea) |
+| **Meetily** | MCP server for local meeting transcripts — search past meetings, extract decisions and action items, start/stop recording; on-device Whisper/Parakeet, no meeting bot | [meetily.ai](https://meetily.ai/mcp) · [repo](https://github.com/Zackriya-Solutions/meetily) |
+| **Page Agent** | Chrome extension + public skills tree — one-click AI automation for specific sites (GitHub, Gmail, etc.); pull requests welcome for new site skills | [repo](https://github.com/kramar-alexandr/page-agent-skills) |
+
+---
+
+## Security
+
+> Skills for security auditing, penetration testing, and vulnerability assessment.
+
+| Skill | What it does | Source |
+|---|---|---|
+| **Strix** | AI pentesting agent: runs autonomous vulnerability scans inside a Kali Linux Docker sandbox — web apps, APIs, source code, GitHub repos; validates exploits (OWASP Top 10+) with working PoC, outputs SARIF for CI/CD | [usestrix.com](https://usestrix.com) · [repo](https://github.com/usestrix/strix) |
 
 ---
 

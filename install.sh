@@ -35,6 +35,8 @@ AUTO_SKILLS=(
   i-have-adhd
   wifi-diagnostics
   wifi-diagnostics-pro
+  strix
+  meetily
 )
 
 # Skills by category (AUTO only — complex installs handled separately)
@@ -44,6 +46,8 @@ CAT_RESEARCH=(last30days)
 CAT_LARGE=()
 CAT_WRITING=(humanizer i-have-adhd)
 CAT_NETWORKING=(wifi-diagnostics wifi-diagnostics-pro)
+CAT_SECURITY=(strix)
+CAT_PRODUCTIVITY=(meetily)
 
 LABEL_taste-skill="Taste Skill              — professional website design pipeline"
 LABEL_web-design-guidelines="Web Design Guidelines   — Vercel UI/a11y review"
@@ -60,6 +64,8 @@ LABEL_humanizer="Humanizer               — rewrites AI text to sound human (26
 LABEL_i-have-adhd="I Have ADHD             — action-first outputs, numbered steps, no filler"
 LABEL_wifi-diagnostics="Wi-Fi Diagnostics       — 4-step audit: RF/PHY, latency, DNS, throughput + ranked fixes"
 LABEL_wifi-diagnostics-pro="Wi-Fi Diagnostics Pro   — adds Wi-Fi 6E/7, MIMO, WPA3, mesh, MTU, bufferbloat grade"
+LABEL_strix="Strix                   — AI pentesting: Kali Docker sandbox, OWASP Top 10+, SARIF output"
+LABEL_meetily="Meetily                 — MCP: search local meeting transcripts, extract decisions + action items"
 
 # ── Auto-installer ────────────────────────────────────────────────────────────
 install_claude() {
@@ -137,6 +143,25 @@ print_manual_installs() {
       ;;
     networking)
       ;;
+    security)
+      say ""
+      say "${B}Strix — setup after skill install:${R}"
+      tip "1. Install Docker"
+      tip "2. npm install -g @anthropic-ai/claude-cli && claude login"
+      tip "3. git clone https://github.com/tghastings/strix-claude-code.git && cd strix-claude-code && pip install -e ."
+      tip "   Or: npx skills add usestrix/strix  (installs 9 official skills)"
+      tip "4. Run: strix-claude-tui"
+      ;;
+    productivity)
+      say ""
+      say "${B}Also in Productivity (manual install):${R}"
+      tip "Page Agent  Chrome extension → https://github.com/kramar-alexandr/page-agent-skills"
+      say ""
+      say "${B}Meetily — setup after skill install:${R}"
+      tip "1. Install Meetily at https://meetily.ai"
+      tip "2. Open Meetily → Settings → Integrations → MCP Server → enable Claude Code"
+      tip "3. Start a new Claude Code session — tools load automatically"
+      ;;
   esac
 }
 
@@ -175,10 +200,12 @@ pick "Category:" \
   "All skills (auto-installable)" \
   "Frontend Design  (9 skills)" \
   "Senior Developer (1 auto + hints for 5 more)" \
-  "Research & Understanding (1 auto + hints for 5 more)" \
+  "Research & Understanding (1 auto + hints for 7 more)" \
   "Large Projects & Token Management (hints only)" \
   "Writing & Video  (2 auto + hints for 3 more)" \
   "Networking & System (2 skills)" \
+  "Security (1 auto + setup hints)" \
+  "Productivity (1 auto + hints for 1 more)" \
   "Single skill"
 category="$PICK"
 
@@ -190,7 +217,9 @@ case "$category" in
   5) skills=(); cat_key="large" ;;
   6) skills=("${CAT_WRITING[@]}"); cat_key="writing" ;;
   7) skills=("${CAT_NETWORKING[@]}"); cat_key="networking" ;;
-  8)
+  8) skills=("${CAT_SECURITY[@]}"); cat_key="security" ;;
+  9) skills=("${CAT_PRODUCTIVITY[@]}"); cat_key="productivity" ;;
+  10)
     say "" >&2
     say "${B}Choose a skill:${R}" >&2
     i=1
@@ -229,6 +258,8 @@ elif [ "$cat_key" = "all" ]; then
   print_manual_installs "large"
   print_manual_installs "writing"
   print_manual_installs "networking"
+  print_manual_installs "security"
+  print_manual_installs "productivity"
 fi
 
 say ""
